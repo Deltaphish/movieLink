@@ -6,7 +6,8 @@ module Lib(
   Posix.createLink,
   Posix.rename,
   Dir.doesDirectoryExist,
-  linkFiles
+  linkFiles,
+  Dir.canonicalizePath
 ) where
 
 import qualified System.Posix as Posix

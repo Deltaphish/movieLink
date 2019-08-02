@@ -28,7 +28,12 @@ movieLink [src,tgt,opt]
 movieLink ["-v"] = printVersion
 movieLink _  = printHelp
 
+
+makeAddrAbs :: [String] -> IO [String]
+makeAddrAbs (src:xs) = canonicalizePath src >>= \f -> return(f:xs)
+
 main :: IO ()
 main = do
  args <- getArgs
- movieLink args
+ args_abs <- makeAddrAbs args
+ movieLink args_abs
